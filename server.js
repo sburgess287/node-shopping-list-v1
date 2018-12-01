@@ -31,6 +31,22 @@ app.get('/shopping-list', (req, res) => {
   res.json(ShoppingList.get());
 });
 
+// Keeping all Recipes code together for easy debugging
+
+// Import Recipes model from the models.js file
+const {Recipes} = require('./models');
+
+// Add Recipes for test purposes
+Recipes.create('salsa', ['tomato', 'onion', 'habeneros', 'lime']);
+Recipes.create('hummus', ['garbanzo beans', 'lemon', 'garlic']);
+
+
+// create GET endpoint for recipes, return
+// all current Recipes by calling `Recipes.get();`
+app.get('/recipes', (req, res) => {
+  res.json(Recipes.get());
+});
+
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
 });
